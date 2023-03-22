@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: ShantellSans-Light, Mukta-Light, Rubik-Light;
+}
+
+@font-face {
+    font-family: ShantellSans-Bold;
+    // src: url(../src/assets/fonts/ShantellSans/ShantellSans-Bold.ttf);
+    src: url(../src/assets/fonts/ShantellSans/ShantellSans-Bold.ttf);
+}
+@font-face {
+    font-family: ShantellSans-BoldItalic;
+    src: url(../src/assets/fonts/ShantellSans/ShantellSans-BoldItalic.ttf);
+}
+@font-face {
+    font-family: ShantellSans-Light;
+    src: url(../src/assets/fonts/ShantellSans/ShantellSans-Light.ttf);
+}
+@font-face {
+    font-family: Mukta-Light;
+    src: url(../src/assets/fonts/Mukta/Mukta-Light.ttf);
+}
+@font-face {
+    font-family: Roboto-Light;
+    src: url(../src/assets/fonts/Roboto/Roboto-Light.ttf);
+}
+@font-face {
+    font-family: Rubik-Light;
+    src: url(../src/assets/fonts/Rubik/Rubik-Light.ttf);
+}

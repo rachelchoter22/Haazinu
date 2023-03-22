@@ -1,0 +1,69 @@
+<h2 style="text-align: center;font-weight: bolder;"> {{zman}} {{currentEmployees?.idUserNavigation?.firstName}} היקר</h2>
+<table class="tableNav">
+  <tr>
+<td>
+  <div id="relaition">
+    <button type="button" class="btn btn-outline-success" (click)="awaitingExecution()">({{countApplyAwait}}) ממתין לביצוע</button><br>
+    <button  type="button" class="btn btn-outline-success" (click)="inTake()">לקיחת אינטייק</button><br>
+  <button  type="button" class="btn btn-outline-success" (click)="newApply()">פניה חדשה</button>
+  </div>
+</td>
+<td >
+<div id="btn">
+  <button  type="button" class="btn btn-outline-success"(click)="awaitingClassificationC()" >({{countApply}})פניות הממתינות לסיווג מנהלי</button>
+  <button type="button" class="btn btn-outline-success" (click)="allApplyManager()"> כלל הפניות </button>
+  <!-- <button type="button" class="btn btn-outline-success" (click)="statusApplyManager()"> סטטוס הפניות </button> -->
+  <button type="button"style="background-color: green;color:white" class="btn btn-outline-success"(click)="systemActivity()"> פעילות מערכת </button><br>
+</div>
+</td>
+  </tr>
+</table>
+
+
+    <!-- <div *ngIf="isClickAwait==true">
+      <app-awaiting-execution></app-awaiting-execution>
+    </div> -->
+<table *ngIf="isOkFromIntake==true" style="width: 80%;margin-left: 10%;" dir="rtl" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">דחיפות הפנייה</th>
+        <th scope="col">מספר פנייה</th>
+        <th scope="col">תאריך</th>
+        <th scope="col">שם ממלא</th>
+        <th scope="col">סיבת הפנייה</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of applyListFromIntake;"style="cursor: pointer;" (click)="sivoug(item.id)">
+        <td>{{item.levelUrgency}}</td>
+        <td>{{item.id}}</td>
+        <td>{{item.dateNow|date:'dd/MM/yyyy'}}</td>
+        <td>{{item.employees?.idUserNavigation.firstName}}</td>
+        <td>{{item.applyCaused?.descreption}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table *ngIf="isClickAwait==true"  style="width: 80%;margin-left: 10%;" dir="rtl" class="table table-hover">
+    <thead>
+      <th>תאריך</th>
+      <th> מספר פנייה</th>
+      <th>מפנה</th>
+      <th> קטגוריה</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of listTreatmentDetails" style="cursor: pointer;" (click)="addTreatmentDetails(i)">
+        
+        <td>{{i.dateNow|date:'dd/MM/yyyy'}}</td>
+        <td>{{i.applyId}}</td>
+        <td>{{i.nextEmployees?.idUserNavigation?.firstName}}</td>
+        <td>{{i.nextStep?.taskName}}</td>
+    
+      </tr>
+
+    </tbody>
+
+  </table>
+  <router-outlet></router-outlet>
+

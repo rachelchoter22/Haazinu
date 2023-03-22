@@ -1,0 +1,126 @@
+<div class="card">
+  <div>
+    <p *ngIf="currentEmplorees.job?.details=='מנהל פניות          '">פנייה מספר {{idApply}}</p>
+    <span *ngIf="currentPatientDetails.fillEmloyees?.idUserNavigation?.firstName"> <b>האינטייק נלקח ע"י:</b></span>
+    {{currentPatientDetails.fillEmloyees?.idUserNavigation?.firstName}}<b>
+      <span *ngIf="currentPatientDetails.dateNow"> <b>בתאריך:</b></span>
+    </b>{{currentPatientDetails.dateNow|date:'dd/MM/yyyy'}}
+    <span *ngIf="currentPatientDetails.dateNow"> <b>בשעה:</b></span>
+    {{currentPatientDetails.dateNow|date:'HH:mm:ss'}}<br>
+    {{currentApply.asker?.firstName}}
+    <span *ngIf="currentApply.asker?.phone"> <b>במספר טלפון:</b></span>
+    {{currentApply.asker?.phone}}<b>
+      <span *ngIf="self!=''"> <b>פונה בנוגע ל:</b></span>
+    </b>{{self}}<br> <b>{{affinity}} </b> {{currentDetailsAsker.referredBy}}<br>
+    <br> {{currentPatientDetails.user?.firstName}} {{currentPatientDetails.user?.lastName}}
+    <span *ngIf="currentPatientDetails.user"> <b> בשלב לקיחת הפנייה:</b></span>
+    <b>{{gender}} </b>{{currentPatientDetails.ageFillApply}}
+    <span *ngIf="ageNow"> <b>כיום {{gender}}:</b>{{ageNow}}</span>
+
+    <span *ngIf="currentPatientDetails.family">
+      <b>מגיע מרקע משפחתי: </b>{{currentPatientDetails.family?.parentStatus}}<b> במשפחה ישנם :
+      </b>{{currentPatientDetails.family?.childrenNumber}} ילדים {{currentPatientDetails.user?.firstName}}<b> {{yachas}}
+        ה: </b>{{currentPatientDetails.familyPlace}}.<br></span>
+    <span *ngIf="currentPatientDetails.family?.familyDetails"><b>פירוט נוסף על המשפחה:
+      </b>{{currentPatientDetails.family?.familyDetails}}<br></span>
+    <span *ngIf="currentPatientDetails.address"><b>גרים ב: </b></span>
+    {{currentPatientDetails.address?.city}} <span *ngIf="currentPatientDetails.address?.city=='ירושלים'"><b>בשכונת:
+      </b>{{currentPatientDetails.address?.neighborhood}} <br></span>
+    {{isInstition}}<br>
+    {{isInstitionPast}}<br>
+    <span *ngIf="currentApply.applyCaused?.descreption"> <b> סיבת הפנייה:</b></span>
+    {{currentApply.applyCaused?.descreption}} <span *ngIf="currentApply.detailsCausedRefferal">
+      <b>פירוט הפנייה:</b>{{currentApply.detailsCausedRefferal}} <br></span>
+    <b>{{isTherapeuticT}} </b> {{isTherapeutic}}<br>
+    <span *ngIf="currentPatientDetails.isStillTerapist"><b>כיום</b></span>{{isStillTerapist}}<br>
+    <b>{{permissionContact}}</b><br><br>
+    <span *ngIf="currentPatientDetails.isMatureCharacter"><b> בקשר עם: </b> </span>
+    {{isMatureCharacter}}
+    <span *ngIf="currentPatientDetails.matureCharacter?.framwork"><b> מטעם מסגרת: </b> </span>
+    {{currentPatientDetails.matureCharacter?.framwork}} <br>
+    <b><span *ngIf="currentPatientDetails.matureCharacter?.permissionContact">
+        במידת הצורך מאפשרים לפנות
+      </span></b>
+    <br>
+
+
+    <!-- <p>A glass-like card to demonstrate the <strong>Glassmorphism UI design</strong> trend.</p>
+  <p class="card-footer">Created by Rahul C.</p> -->
+  </div>
+  <button *ngIf="currentEmplorees.job?.details=='מנהל פניות          '"
+    (click)="isClickAddTreatment=!isClickAddTreatment" class="btn btn-success">הוסף הערה לתיקון אינטייק
+  </button>
+  <div *ngIf="isClickAddTreatment">
+    <span id="title">הוסף הערה איפה צריך לעשות תיקון </span><br>
+    <textarea style=" text-align: right;" class="text-input" #textarea (input)="resizeTextarea(textarea)"
+      id="documentation" name="documentation" [(ngModel)]="newTreatmentDedails.nextDocumentation" required></textarea>
+    <br>
+
+    <button type="button" class="btn btn-success" (click)="addTraetmentDetails()">שלח </button>
+
+  </div>
+  <!-- <div class="b" > -->
+  <!-- <header>
+    <a href=""> -->
+  <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/154571/Official.png" alt="Earth News"> -->
+  <!-- </a>
+  </header> -->
+  <!-- <main>
+    <h1><span><sub></sub></span> <br>פירוט הפנייה</h1>
+    <div>
+      <span *ngIf="currentPatientDetails.fillEmloyees?.idUserNavigation?.firstName"> <b>האינטייק נלקח ע"י:</b></span>
+      {{currentPatientDetails.fillEmloyees?.idUserNavigation?.firstName}}<b>
+        <span *ngIf="currentPatientDetails.dateNow"> <b>בתאריך:</b></span>
+        </b>{{currentPatientDetails.dateNow|date:'dd/MM/yyyy'}}
+        <span *ngIf="currentPatientDetails.dateNow"> <b>בשעה:</b></span>
+      {{currentPatientDetails.dateNow|date:'HH:mm:ss'}}<br>
+      {{currentApply.asker?.firstName}}
+      <span *ngIf="currentApply.asker?.phone"> <b>במספר טלפון:</b></span>
+     {{currentApply.asker?.phone}}<b> 
+      <span *ngIf="self!=''"> <b>פונה בנוגע ל:</b></span>
+      </b>{{self}}<br> <b>{{affinity}} </b> {{currentDetailsAsker.referredBy}}<br>
+      <br> {{currentPatientDetails.user?.firstName}} {{currentPatientDetails.user?.lastName}}
+      <span *ngIf="currentPatientDetails.user"> <b> בשלב לקיחת הפנייה:</b></span>
+      <b>{{gender}} </b>{{currentPatientDetails.ageFillApply}} 
+      <span *ngIf="ageNow"> <b>כיום {{gender}}:</b>{{ageNow}}</span>
+
+      <span *ngIf="currentPatientDetails.family">
+        <b>מגיע מרקע משפחתי: </b>{{currentPatientDetails.family?.parentStatus}}<b> במשפחה ישנם :
+        </b>{{currentPatientDetails.family?.childrenNumber}} ילדים {{currentPatientDetails.user?.firstName}}<b> {{yachas}}
+          ה: </b>{{currentPatientDetails.familyPlace}}.<br></span>
+      <span *ngIf="currentPatientDetails.family?.familyDetails"><b>פירוט נוסף על המשפחה:
+        </b>{{currentPatientDetails.family?.familyDetails}}<br></span>
+        <span *ngIf="currentPatientDetails.address"><b>גרים ב: </b></span>
+      {{currentPatientDetails.address?.city}} <span
+        *ngIf="currentPatientDetails.address?.city=='ירושלים'"><b>בשכונת:
+        </b>{{currentPatientDetails.address?.neighborhood}} </span><br>
+      {{isInstition}}<br>
+      {{isInstitionPast}}<br>
+      <span *ngIf="currentApply.applyCaused?.descreption"> <b> סיבת הפנייה:</b></span>
+      {{currentApply.applyCaused?.descreption}} <span *ngIf="currentApply.detailsCausedRefferal">
+        <b>פירוט הפנייה:</b>{{currentApply.detailsCausedRefferal}} </span><br>
+      <b>{{isTherapeuticT}} </b> {{isTherapeutic}}<br>
+      <span *ngIf="currentPatientDetails.isStillTerapist"><b>כיום</b></span>{{isStillTerapist}}<br>
+      <b>{{permissionContact}}</b><br><br>
+      <span *ngIf="currentPatientDetails.isMatureCharacter"><b> בקשר עם: </b> </span>
+      {{isMatureCharacter}}
+      <span *ngIf="currentPatientDetails.matureCharacter?.framwork"><b> מטעם מסגרת: </b> </span>
+      {{currentPatientDetails.matureCharacter?.framwork}} <br>
+      <b><span *ngIf="currentPatientDetails.matureCharacter?.permissionContact">
+          במידת הצורך מאפשרים לפנות
+        </span></b><br><br>
+        <button *ngIf="currentEmplorees.job?.details=='מנהל פניות          '" (click)="isClickAddTreatment=!isClickAddTreatment"
+  class="btn btn-outline-success">הוסף הערה לתיקון אינטייק
+  <span></span>
+</button><br><br><br>
+<div *ngIf="isClickAddTreatment">
+  <span id="title">הוסף הערה איפה צריך לעשות תיקון </span><br>
+  <textarea style=" text-align: right;" class="text-input" #textarea (input)="resizeTextarea(textarea)"
+    id="documentation" name="documentation" [(ngModel)]="newTreatmentDedails.nextDocumentation" required></textarea>
+  <br>
+  <button type="button" class="btn btn-outline-success" (click)="addTraetmentDetails()">שלח </button>
+
+</div>
+    </div>
+  </main>
+</div> -->

@@ -1,0 +1,64 @@
+button{
+    text-align: center;
+    border-color: white;
+     font-size: 99%;
+     background-color: rgb(46, 46, 128); 
+     color: white;
+}
+#cot{
+    text-align: center;
+    direction: rtl;
+}
+h3{
+ font-weight: 10%; 
+ color:rgb(46, 46, 128);
+ text-align: center;
+}
+.formE{
+    // background-color: white;
+    width: 50%;
+    margin-left: 25%;
+    background-color: rgb(226, 226, 253);
+    border: 2px solid  rgb(46, 46, 128);
+    border-radius: 1%;
+}
+
+  
+  #row{
+    text-align: right;
+    margin-right: 4%;
+    direction: rtl;
+    margin-bottom: 1%;
+  }
+  span{
+    font-weight: bold;
+   color: rgb(46, 46, 128); ;
+  }
+  #addEmp{
+    margin-bottom: 2%;
+    margin-left: 1%;
+    width: 20%;
+    border: 2px;
+   
+  }
+  #addEmp:hover{
+    background-color: white;
+    color:rgb(161, 161, 248);
+   transform: scale(1.1);
+   border-color: rgb(46, 46, 128);
+      margin-left: 2%;
+  }
+  input{
+   margin-right: 2%;
+  }
+  select{
+    margin-right: 2%;
+  }
+  #tblEmp{
+    text-align: right;
+    direction: rtl;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  

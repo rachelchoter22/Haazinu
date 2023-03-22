@@ -1,0 +1,114 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<h2 style="text-align: right;">{{category.detailsCategory}}</h2>
+<div class="container">
+  <form action="/action_page.php">
+    <div class="row">
+      <!-- מוסד לימודים -->
+      <div *ngIf="isAnotherInstiton==false" class="row">
+        <div class="col-25">
+          <label for="causeReferral"> שם מקום לימודים</label>
+        </div>
+        <div class="col-75">
+          <select id="selectedValueNameIns" name="selectedValueNameIns" [(ngModel)]="selectedValueNameIns"
+            (ngModelChange)="onSelectedValueNameIns(selectedValueNameIns)">
+            <option></option>
+            <option>אחר</option>
+            <option *ngFor="let item of arrayEducational" [value]="item.institutionName">{{item.institutionName}}
+              -{{item.enotherName}}-{{item.address?.city}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <!-- מוסד לימודים אחר -->
+      <div *ngIf="isAnotherInstiton==true" class="row">
+        <button (click)="isClickReturnList()">חזרה לבחירה מתוך הרשימה הקיימת</button>
+        <div class="col-25">
+          <label for="nameAnotherInstiton" dir="rtl">שם מוסד לימודים <span
+              class="glyphicon glyphicon-pencil"></span></label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="newEducationalInstitution.institutionName" id="newInstitutionName"
+            name="newInstitutionName" placeholder="שם מוסד לימודים  " dir="rtl">
+        </div>
+        <div class="col-25">
+          <label for="nameAnotherInstiton" dir="rtl">שם נוסף/ שם הרב המנהל <span
+              class="glyphicon glyphicon-pencil"></span></label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="newEducationalInstitution.enotherName" id="newInstitutionAnotherName"
+            name="newInstitutionAnotherName" placeholder="שם נוסף /שם הרב המנהל " dir="rtl">
+        </div>
+      </div>
+
+
+      <!-- ///////////////////הצגת ערים לפי המוסד שנבחר -->
+      <!-- <div *ngIf="notExistCity==false" class="col-25">
+        <label for="causeReferral"> עיר</label>
+      </div>
+      <div *ngIf="notExistCity==false" class="col-75">
+        <select id="selectedValueCity" name="selectedValueCity" [(ngModel)]="selectedValueCity"
+          (ngModelChange)="onSelectedValueChange(selectedValueCity)">
+          <option *ngFor="let item of arrayCityByEdu" [value]="item">{{item}}</option>
+          <option>אחר</option>
+        </select>
+      </div>
+    </div> -->
+      <!-- עיר אחרת -->
+      <div *ngIf="notExistCity==true" class="row">
+        <div class="col-25">
+          <label for="nameAnotherCity" dir="rtl">עיר <span class="glyphicon glyphicon-pencil"></span></label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="newAddress.city" id="nameAnotherCity" name="nameAnotherCity"
+            placeholder="שם עיר " dir="rtl">
+          <span
+            *ngIf="form.get('hebrewLetters')?.invalid && (form.get('hebrewLetters')?.dirty || form.get('hebrewLetters')?.touched)"
+            style="color:red;">{{getErrorMessageHebrewLetters()}}
+          </span>
+        </div>
+      </div>
+
+      <!-- ////////////////כיתת עזיבה///////////// -->
+      <div *ngIf="chooseArrayLeave && chooseArray" class="row">
+        <div *ngIf="isInstitionPast" class="col-25">
+          איזה שנת לימודים עזב/ה?
+        </div>
+        <div *ngIf="!isInstitionPast" class="col-25">
+           שנת לימודים
+        </div>
+        <div class="col-75">
+          <select id="selectedValueClassL" name="selectedValueClassL" [(ngModel)]="selectedValueClassL">
+            <!--*** (change)="onSelectedValueClassL(selectedValueClassL)" -->
+            <option></option>
+            <option>אחר</option>
+            <option *ngFor="let item of chooseArray" [value]="item.name">{{item.name}}</option>
+          </select>
+        </div>
+
+        <!-- זמן עזיבה -->
+        <div *ngIf="isInstitionPast" class="col-25">
+          <label for="causeReferral"> מתי עזב/ה?</label>
+        </div>
+        <div *ngIf="isInstitionPast" class="col-75">
+          <select id="chooseTimeLeave" name="chooseTimeLeave" [(ngModel)]="chooseTimeLeave">
+            <!-- ****(change)="onSelectedValueTimeLeave(chooseTimeLeave)" -->
+            <option></option>
+            <option *ngFor="let item of chooseArrayLeave" [value]="item.name">{{item.name}}</option>
+          </select>
+        </div>
+
+      </div>
+
+      <input style="margin-right: 0.5%;" type="submit" (click)="next()" value="הוספת מקום לימודים קודם">
+      <!-- <div *ngIf="isNextFillIntake==true">
+        <app-fill-new-apply [isInstitionPast]="isInstitionPast" ></app-fill-new-apply>
+      </div> -->
+      <!-- <input style="margin-right: 0.5%;" type="submit" (click)="nextFillIntake()"  value="הבא">
+    <input style="margin-right: 0.5%;" type="submit" (click)="saveNow()" value="אמשיך מאוחר יותר">   -->
+      <!-- </form> -->
+ 
+</div>
+<router-outlet></router-outlet>

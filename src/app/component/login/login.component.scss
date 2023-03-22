@@ -1,0 +1,31 @@
+.gradient-custom {
+    color:#065492;
+    // height: 10%;
+    font-weight:bolder;
+    margin-left: 10%;
+    width: 80%;
+    margin-top: -9%;
+    }
+
+    
+    #togglePassword1 {
+        margin-left: -80%;
+        cursor: pointer;
+      }
+      #submitButton:hover {
+        transform: scale(1.1);
+      }  
+      #submitButton {
+        width: 70%;
+        height: 40px;
+        margin: auto;
+        display: block;
+        color: #fff;
+        background-color: #065492;
+        border-color: #065492;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.035);
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+      }

@@ -1,0 +1,98 @@
+<button id="returnHome" (click)="return()">
+    <!-- ליבא את התמונה ולהכניס ל assets -->
+    <svg id="faClass" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+      <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+    </svg>
+    <!-- עד פה -->
+    <br>חזרה לדף הבית</button>
+<p>פנייה מספר:{{currentNumApply}} </p>
+
+<!-- <table>
+    <tr>
+        <td> <button id="btnAdd" type="button" (click)="isClick=!isClick" (click)="isClickS=false " class="border">
+                פירוט הפנייה מתוך אינטייק שמולא<span></span></button>
+            <div *ngIf="isClick">
+
+            </div>
+            <button style="margin-top: 6%;" id="btnAdd" type="button" (click)="isClickS=!isClickS "
+                (click)="isClick=false" class="border"> שלבי הטיפול<span></span></button>
+        </td>
+        <td *ngIf="!isClick && !isClickS"> -->
+<div *ngIf="currentTreatmentDetails">
+    <blockquote class="rule">
+        <p>שלב הטיפול האחרון של הפנייה-סטטוס הפניה</p>
+        <span *ngIf="currentTreatmentDetails.dateNow" id="title">בתאריך:</span>
+        <span>{{currentTreatmentDetails.dateNow|date:'dd/MM/yyyy'}} </span>
+        <span *ngIf="currentTreatmentDetails.therapist?.idUserNavigation?.firstName"
+            id="title"></span><span><b>{{currentTreatmentDetails.therapist?.idUserNavigation?.firstName}}
+                מילא את משימת :</b></span>
+        <span *ngIf="currentTreatmentDetails.task?.taskName "
+            id="title"></span><span><b></b>{{currentTreatmentDetails.task?.taskName}}<br>
+            <span *ngIf="currentTreatmentDetails.documentation"
+                id="title">{{currentTreatmentDetails.therapist?.idUserNavigation?.firstName}} מתאר לאחר ביצוע
+                 <span *ngIf="currentTreatmentDetails.task?.taskName " id="title"> </span>
+                {{currentTreatmentDetails.task?.taskName}}-</span>
+            {{currentTreatmentDetails.documentation}}<br>
+        </span>
+        <span *ngIf="currentTreatmentDetails.nextStep?.taskName"
+            id="title"> בשלב הבא החליט לבצע-<span>{{currentTreatmentDetails.nextStep?.taskName}}</span></span>
+        <!-- <span *ngIf="currentTreatmentDetails.nextEmployees?.idUserNavigation?.firstName" id="title">ע"י  :</span><span>{{currentTreatmentDetails.nextEmployees?.idUserNavigation?.firstName}}</span><br> -->
+        <span *ngIf="currentTreatmentDetails.nextStep?.taskName"
+        id="title"> ולהעזר ב  - {{currentTreatmentDetails.nextEmployees?.idUserNavigation?.firstName}}</span>
+      <br> <span *ngIf="currentTreatmentDetails.nextDocumentation" id="title">
+            </span><span>{{currentTreatmentDetails.nextDocumentation}}</span><br>
+        <!-- <span *ngIf="currentTreatmentDetails.dateTask" id="title">תאריך:</span><span>{{currentTreatmentDetails.dateTask|date:'dd/MM/yyyy'}}</span><br> -->
+        <br>
+        <button (click)="isClickPP=!isClickPP" class="border" id="btnAdd"> פרטי הפנייה
+            <span></span>
+        </button>
+        <div *ngIf="isClickPP">
+            <p> פרטי הפנייה מתוך האינטייק שמולא</p>
+<app-patient-details></app-patient-details>
+            <p>שלבי הטיפול</p>
+
+            <div id="divTreatmentDetails" *ngFor="let item of arrayTreatmentDetails">
+                <span *ngIf="item.dateNow" id="title">בתאריך:</span>
+                <span>{{item.dateNow|date:'dd/MM/yyyy'}}</span>
+                <span *ngIf="item.dateNow" id="title">בשעה:</span> <span>{{item.dateNow|date:'HH:mm:ss'}}</span>
+                <span *ngIf="item.therapist?.idUserNavigation?.firstName" id="title">  
+                    {{item.therapist?.idUserNavigation?.firstName}}   </span><span> ביצע</span><br>
+                <span *ngIf="item.task?.taskName " id="title"></span><span>{{item.task?.taskName}}</span>
+                <span *ngIf="item.documentation" id="title">ומתאר
+                    כי:</span><span>{{item.documentation}}</span><br>
+                <span *ngIf="item.nextStep?.taskName" id="title"> לשלב הבא נקבע כי
+                    יתבצע:</span><span>{{item.nextStep?.taskName}}
+                <span *ngIf="item.nextEmployees?.idUserNavigation?.firstName" id="title">ע"י
+                    :</span><span>{{item.nextEmployees?.idUserNavigation?.firstName}}</span></span>
+                <span *ngIf="item.nextDocumentation" id="title"> -</span><span>{{item.nextDocumentation}}</span>
+                <span *ngIf="item.dateTask" id="title">יבוצע
+                    לתאריך:</span><span>{{item.dateTask|date:'dd/MM/yyyy'}}</span>
+                <br>
+                <b> ----------------------</b>
+            </div>
+
+            <button [disabled]="isClickAddTreatment" (click)="isClickAddTreatmentF()" class="border" id="btnAdd"> הוספת
+                שלב טיפול הפנייה
+                <span></span>
+            </button>
+            <div *ngIf="isClickAddTreatment">
+                <app-new-treatment-details></app-new-treatment-details>
+            </div>
+
+        </div>
+    </blockquote>
+</div>
+
+
+
+<!-- <td *ngIf="isClickS"> -->
+
+<!-- </td>
+    <td *ngIf="isClick">
+        <p>פירוט הפנייה מתוך אינטייק שמולא</p>
+     <app-patient-details></app-patient-details>        
+    </td>
+</tr> -->
+
+<!-- </table> -->

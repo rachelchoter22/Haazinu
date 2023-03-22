@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+<!-- <button (click)="GetAllEmployees()">
+  get all employees
+</button> -->
+<form [formGroup]="form" (ngSubmit)="login()">
+
+<section class=" gradient-custom">
+  <div style="margin-top: -5%;">
+    <!-- שם את הכרטיס באמצע העמוד -->
+    <div class="row d-flex justify-content-center align-items-center">
+      <!-- מצמצם את גודל הכרטיס -->
+      <div style="margin-bottom: 0%;"class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <!-- רקע שחור לפרטים -->
+        <div   style="border-radius: 1rem;background-image:url(/assets/backroundTree.JPG) ;background-repeat: no-repeat;">
+          <!-- מרחיק את הכתב שלא יהיה צמוד למסגרת -->
+          <div class="card-body p-5 text-center">
+            <!-- שם את החלק התחתון באמצע -->
+            <div>
+
+              <h1 style="color: green;font-weight:900;">מרכז האזינו</h1>
+              <p style="//font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">הכנס אימייל וסיסמה</p>
+
+              <div class="form-outline form-white mb-4">
+                <input formControlName="emailV" type="email" id="typeEmailX" class="form-control form-control-lg" [(ngModel)]="EmailToLogin" placeholder="הכנס אימייל" dir="rtl" name="email" required/>
+                <br>
+                <span *ngIf="form.get('emailV')?.invalid && (form.get('emailV')?.dirty || form.get('emailV')?.touched)"style="color:red;">{{getErrorMessageEmail()}}</span>
+                <br>
+                <label class="form-label" for="typeEmailX">כתובת אימייל</label>
+                
+              </div>
+              <div id="bjj"class="form-outline form-white mb-4">
+                <input formControlName="passwordV" type="password" id="password1" class="form-control form-control-lg"  [(ngModel)]="PassToLogin" placeholder="הכנס סיסמה" dir="rtl" name="psw"  required/>
+                <i class="bi bi-eye-slash"  id="togglePassword1"></i>
+                <br>
+                <span *ngIf="form.get('passwordV')?.invalid && (form.get('passwordV')?.dirty || form.get('passwordV')?.touched)"style="color:red;">{{getErrorMessagePassword()}}
+                </span><br>
+                <label style="margin-bottom: -5%;" class="form-label" for="typePasswordX">סיסמה</label>
+              </div>
+
+              <p ><button  style="color:#065492;background-color:inherit;border: hidden;"
+                (click)="forgetPassword()">שכחתי סיסמה-החלף סיסמה</button></p>
+
+              <button id="submitButton"[disabled]="form.invalid"
+               class="submitButton pure-button pure-button-primary" type="submit" >כניסה</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</form>
+<router-outlet></router-outlet>
+
